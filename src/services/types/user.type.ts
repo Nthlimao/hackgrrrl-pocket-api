@@ -1,4 +1,6 @@
-import { ObjectType, Field } from "type-graphql";
+import { ObjectType, Field, InputType } from "type-graphql";
+
+import Locality, { LocalityInput } from "./localities.type";
 
 @ObjectType()
 class User {
@@ -6,6 +8,46 @@ class User {
     _id: String;
     @Field()
     email: String;
+    @Field({ nullable: true })
+    firstname?: String;
+    @Field({ nullable: true })
+    lastname?: String;
+    @Field({ nullable: true })
+    phone?: String;
+    @Field({ nullable: true })
+    dateOfBirth?: Date;
+    @Field({ nullable: true })
+    gender?: String;
+    @Field({ nullable: true })
+    sexualOrientation?: String;
+    @Field({ nullable: true })
+    race?: String;
+    @Field({ nullable: true })
+    disability?: String;
+    @Field({ nullable: true })
+    parenthood?: Boolean;
+    @Field({ nullable: true })
+    schooling?: String;
+    @Field({ nullable: true })
+    remuneration?: String;
+    @Field({ nullable: true })
+    civilStatus?: String;
+    @Field({ nullable: true })
+    naturalness?: String;
+    @Field({ nullable: true })
+    locality?: Locality;
+}
+
+@InputType()
+export class RegisterInput {
+    @Field()
+    email: String;
+    @Field()
+    password: String;
+}
+
+@InputType()
+export class CompleteInput {
     @Field()
     firstname: String;
     @Field()
@@ -23,7 +65,7 @@ class User {
     @Field()
     disability: String;
     @Field()
-    parenthood: String;
+    parenthood: Boolean;
     @Field()
     schooling: String;
     @Field()
@@ -33,7 +75,7 @@ class User {
     @Field()
     naturalness: String;
     @Field()
-    imageProfile: String;
+    locality: LocalityInput;
 }
 
 export default User;

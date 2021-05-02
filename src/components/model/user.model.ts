@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 
+import { LocalitySchema } from "./locality.model";
+import { IUser } from "../type/user.type";
+
 const UserSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -9,6 +12,7 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         require: true,
+        select: false,
     },
     firstname: {
         type: String,
@@ -22,9 +26,7 @@ const UserSchema = new mongoose.Schema({
     phone: {
         type: String,
     },
-    locality: {
-        type: String,
-    },
+    locality: LocalitySchema,
     gender: {
         type: String,
     },
@@ -37,13 +39,16 @@ const UserSchema = new mongoose.Schema({
     disability: {
         type: String,
     },
+    parenthood: {
+        type: Boolean,
+    },
+    schooling: {
+        type: String,
+    },
     remuneration: {
         type: String,
     },
     civilStatus: {
-        type: String,
-    },
-    imageProfile: {
         type: String,
     },
     naturalness: {
@@ -51,4 +56,4 @@ const UserSchema = new mongoose.Schema({
     },
 });
 
-export default mongoose.model("User", UserSchema);
+export default mongoose.model<IUser>("User", UserSchema);

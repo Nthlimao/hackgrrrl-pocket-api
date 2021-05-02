@@ -1,3 +1,5 @@
+import { Document } from "mongoose";
+
 type GenderTypes =
     | "AGENDER"
     | "TRANS MAN"
@@ -71,7 +73,7 @@ type UserType = {
     firstname?: string;
     lastname?: string;
     dateOfBirth?: Date;
-    phone: string;
+    phone?: string;
     locality?: LocalityType;
     gender?: GenderTypes;
     sexualOrientation?: SexualOrientationTypes;
@@ -81,8 +83,42 @@ type UserType = {
     schooling?: SchoolingTypes;
     remuneration?: RemunerationTypes;
     civilStatus?: CivilStatusType;
-    imageProfile?: string;
     naturalness?: "Brasileiro" | string;
+};
+
+export interface IUser extends Document {
+    email: string;
+    password: string;
+    firstname?: string;
+    lastname?: string;
+    dateOfBirth?: Date;
+    phone?: string;
+    locality?: LocalityType;
+    gender?: GenderTypes;
+    sexualOrientation?: SexualOrientationTypes;
+    race?: RaceType;
+    disability?: DisabilityTypes;
+    parenthood?: boolean;
+    schooling?: SchoolingTypes;
+    remuneration?: RemunerationTypes;
+    civilStatus?: CivilStatusType;
+    naturalness?: "Brasileiro" | string;
+}
+
+export type UserCompleteType = {
+    firstname: string;
+    lastname: string;
+    dateOfBirth: Date;
+    locality: LocalityType;
+    gender: GenderTypes;
+    sexualOrientation: SexualOrientationTypes;
+    race: RaceType;
+    disability: DisabilityTypes;
+    parenthood: boolean;
+    schooling: SchoolingTypes;
+    remuneration: RemunerationTypes;
+    civilStatus: CivilStatusType;
+    naturalness: "Brasileiro" | string;
 };
 
 export default UserType;

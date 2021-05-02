@@ -32,3 +32,18 @@ const CountrySchema = new mongoose.Schema({
 });
 
 export const CountryModel = mongoose.model("Country", CountrySchema);
+
+export const LocalitySchema = new mongoose.Schema({
+    cityCode: {
+        type: String,
+        required: true,
+    },
+    stateCode: {
+        type: String,
+        required: true,
+    },
+    countryCode: {
+        type: String,
+        required: true,
+    },
+});

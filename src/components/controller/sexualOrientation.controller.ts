@@ -1,4 +1,4 @@
-import SexualOrientationModel from "../model/schooling.model";
+import SexualOrientationModel from "../model/sexualOrientation.model";
 
 class SexualOrientationController {
     async index() {
