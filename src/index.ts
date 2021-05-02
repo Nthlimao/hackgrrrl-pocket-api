@@ -40,7 +40,9 @@ const init = async () => {
         schema,
         context: ({ req, res }) => ({ req, res }),
     });
-    server.listen({}, () => console.log("Running"));
+    server.listen({ port: process.env.PORT || 3100 }, () =>
+        console.log("Running")
+    );
 };
 
 init();
